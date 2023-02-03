@@ -1,0 +1,19 @@
+{
+  "name": "backend-api-node",
+  "version": "1.0.0",
+  "description": "proejeto 3 modulo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M4riotto/backend-api-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/M4riotto/backend-api-node/issues"
+  },
+  "homepage": "https://github.com/M4riotto/backend-api-node#readme"
+}
