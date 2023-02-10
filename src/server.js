@@ -1,7 +1,7 @@
 const http = require("http");
 
 const host = 'localhost';
-const port = 3306;
+const port = 3308;
 
 
 const requestListener = function (req, res) {
