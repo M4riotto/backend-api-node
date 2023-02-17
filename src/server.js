@@ -22,12 +22,14 @@ app.get('/cursos', (req, res) => {
   con.connect((err) => {
     if (err) throw err;
     const sql = "select * from cursos;"
-    con.query(sql, function (err, result) {
+    con.query(sql, (err, result) => {
       if (err) throw err;
       const objResult = JSON.parse(JSON.stringify(result))
       res.json(objResult)
     })
   });
+
+
 
  
 })
