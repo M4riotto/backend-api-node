@@ -1,8 +1,7 @@
 const mysql = require('mysql')
 const courseModel = {}
 
-
-courseModel.listAllCourses = (req, res) => {
+courseModel.listAllCourses = (callback) => {
   const con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -10,11 +9,17 @@ courseModel.listAllCourses = (req, res) => {
     database: "apinode"
   })
   const sql = "SELECT * FROM cursos;"
-  con.query(sql, (err, data) => {
-    if (err) res.status(500).json({ message: "Erro no Banco de Dados" })
-    res.json(data)
+  con.query(sql, (err, result) => {
+    if (err) {
+      callback(err, null)
+    } else {
+      callback(null, result)
+    }
   })
+}
 
+courseModel.createCourse = (req, res) => {
+  res.json({ message: "Entrou na rota /course com POST!" })
 }
 
 module.exports = courseModel
