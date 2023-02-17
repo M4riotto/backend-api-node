@@ -1,13 +1,9 @@
 const express = require('express')
 const mysql = require('mysql')
 const router = express.Router()
+const courseController = require('../controllers/courseController')
 
-router.get('/', (req, res) => {
-    res.json({message: "Entrou na rota /course via GET"})
-})
-
-router.post('/', (req, res) => {
-    res.json({message: "Entrou na rota /course via POST"})
-})
+router.get('/', courseController.listAllCourses);
+router.post('/', courseController.createCourse);
 
 module.exports = router
