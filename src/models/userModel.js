@@ -12,6 +12,8 @@ userModel.listAllUsers = (callback) => {
   })
 
   //INSERT INTO `users`(`nome`, `cargo`) VALUES ('Siqueira','Front-end');
+  //DELETE FROM `users` WHERE nome = 'siqueira';
+  //SELECT nome , cargo FROM users;
   const sql = "SELECT nome , cargo FROM users;"
   con.query(sql, (err, result) => {
     if (err) {
