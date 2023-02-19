@@ -10,7 +10,9 @@ userModel.listAllUsers = (callback) => {
     password: "",
     database: "apinode"
   })
-  const sql = "SELECT * FROM users;"
+
+  //INSERT INTO `users`(`nome`, `cargo`) VALUES ('Siqueira','Front-end');
+  const sql = "SELECT nome , cargo FROM users;"
   con.query(sql, (err, result) => {
     if (err) {
       callback(err, null)
