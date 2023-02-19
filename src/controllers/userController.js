@@ -1,3 +1,5 @@
+//controller manda para o routes o que foi pedido no Model
+
 const mysql = require('mysql')
 const userModel = require('../models/userModel')
 

@@ -1,3 +1,5 @@
+//faz a connection e faz o que foi pedido, manda pro controller
+
 const mysql = require('mysql')
 const userModel = {}
 
