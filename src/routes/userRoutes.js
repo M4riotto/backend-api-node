@@ -1,4 +1,4 @@
-//aqui ele mostra tudo que foi pedido
+//aqui ele mostra no server tudo que foi pedido
 
 const express = require('express');
 const router = express.Router();

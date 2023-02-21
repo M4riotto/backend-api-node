@@ -11,17 +11,18 @@ userController.listAllUsers = (req, res) => {
       res.status(500).json({ message: "Erro no Banco de Dados" })
     if (result)
 
-    res.json(result)
+  res.json(result)
+
     // for (let index = 0; index < result.length; index++) {
     //   const element = result[index];
 
-    //   console.log(element.cargo)
+    //   console.log(`nome ${index}: ${element.nome} \ncargo: ${element.cargo} \n---------`)
     // }
       
       // result.forEach(resultado => {
       //     res.json(resultado.cargo)  
       // })
-  })
+  }) 
 }
 
 userController.createUser = (req, res) => {
