@@ -13,5 +13,5 @@ app.all('*', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port http:www.localhost:${port}`)
 })
