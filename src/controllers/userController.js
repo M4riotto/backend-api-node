@@ -10,7 +10,17 @@ userController.listAllUsers = (req, res) => {
     if (error)
       res.status(500).json({ message: "Erro no Banco de Dados" })
     if (result)
-      res.json(result)
+
+    res.json(result)
+    // for (let index = 0; index < result.length; index++) {
+    //   const element = result[index];
+
+    //   console.log(element.cargo)
+    // }
+      
+      // result.forEach(resultado => {
+      //     res.json(resultado.cargo)  
+      // })
   })
 }
 
