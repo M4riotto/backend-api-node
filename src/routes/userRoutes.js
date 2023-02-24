@@ -1,11 +1,12 @@
-//aqui ele mostra no server tudo que foi pedido
+const express = require('express')
+const router = express.Router()
 
-const express = require('express');
-const router = express.Router();
+router.get('/', (req, res) => {
+  res.json({ message: "Entrou na rota /user com GET!" })
+})
 
-const userController = require('../controllers/userController')
+router.post('/', (req, res) => {
+  res.json({ message: "Entrou na rota /user com POST!" })
+})
 
-router.get('/', userController.listAllUsers);
-router.post('/', userController.createUser);
-
-module.exports = router;
+module.exports = router
