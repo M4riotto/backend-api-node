@@ -5,9 +5,9 @@ const courseController = require('../controllers/courseController')
 
 const { listAllCourses, createCourse, deleteCourse, updateCourse } = courseController
 
-router.put('/', listAllCourses);
+router.get('/', listAllCourses);
 router.post('/', createCourse);
 router.delete('/', deleteCourse);
-router.get('/', updateCourse);
+router.put('/', updateCourse);
 
-module.exports = router;
+module.exports = router; 

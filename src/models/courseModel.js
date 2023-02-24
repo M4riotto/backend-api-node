@@ -14,9 +14,9 @@ courseModel.listAllCourses = (callback) => {
 }
 
 courseModel.createCourse = (course, callback) => {
-  const { curso, cargahoraria } = course
+  const { nome, cargahoraria } = course
   const sql = 'INSERT INTO cursos (nome, cargahoraria) VALUES (?, ?);'
-  const values = [curso, cargahoraria]
+  const values = [nome, cargahoraria]
 
   con.query(sql, values, (err, result) => {
     if (err) {

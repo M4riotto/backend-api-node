@@ -4,6 +4,7 @@ const userRoutes = require('./routes/userRoutes')
 
 const app = express()
 const port = 3100
+const host = 'localhost'
 
 app.use(express.json())
 
@@ -17,5 +18,5 @@ app.all('*', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port http://www.${host}:${port}/course`)
 })
