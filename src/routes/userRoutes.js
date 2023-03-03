@@ -1,12 +1,14 @@
-const express = require('express')
-const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.json({ message: "Entrou na rota /user com GET!" })
-})
+const express = require('express');
+const router = express.Router();
 
-router.post('/', (req, res) => {
-  res.json({ message: "Entrou na rota /user com POST!" })
-})
+const userController = require('../controllers/userController')
 
-module.exports = router
+const { listAllusers, createUser, deleteUser, updateUser } = userController
+
+router.get('/', listAllusers);
+router.post('/', createUser);
+router.delete('/', deleteUser);
+router.put('/', updateUser);
+
+module.exports = router; 

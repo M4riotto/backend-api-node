@@ -1,9 +1,9 @@
 const con = require('../db/dbConnection')
 
-const courseModel = {}
+const userModel = {}
 
-courseModel.listAllCourses = (callback) => {
-  const sql = "SELECT * FROM cursos;"
+userModel.listAllUser = (callback) => {
+  const sql = "SELECT * FROM users;"
   con.query(sql, (err, result) => {
     if (err) {
       callback(err, null)
@@ -14,12 +14,12 @@ courseModel.listAllCourses = (callback) => {
   })
 }
 
-courseModel.createCourse = (course, callback) => {
-  const { nome, cargahoraria } = course
-  const sql = 'INSERT INTO cursos (nome, cargahoraria) VALUES (?, ?);'
-  const values = [nome, cargahoraria]
+userModel.createUser = (user, callback) => {
+  const { nome, cargo } = user
+  const sql = 'INSERT INTO users (nome, cargo) VALUES (?, ?);'
+  const values = [nome, cargo]
   // const sql = 'INSERT INTO cursos SET ?;'
-  // const values = }nome, cargahoraria}
+  // const values = {nome, cargahoraria}
 
   con.query(sql, values, (err, result) => {
     if (err) {
@@ -30,9 +30,9 @@ courseModel.createCourse = (course, callback) => {
   })
 }
 
-courseModel.deleteCourse = (course, callback) => {
-  const { id } = course
-  const sql = 'DELETE FROM `cursos` WHERE id = ?;'
+userModel.deleteUser = (user, callback) => {
+  const { id } = user
+  const sql = 'DELETE FROM `users` WHERE id = ?;'
   const values = [id]
 
   con.query(sql, values, (err, result) => {
@@ -44,10 +44,10 @@ courseModel.deleteCourse = (course, callback) => {
   })
 }
 
-courseModel.updateCourse = (course, callback) => {
-  const { id, nome, cargahoraria } = course
-  const sql = 'UPDATE cursos SET nome = ?, cargahoraria = ? WHERE id = ?;'
-  const values = [nome, cargahoraria, id]
+userModel.updateUser = (user, callback) => {
+  const { id, nome, cargo } = user
+  const sql = 'UPDATE users SET nome = ?, cargo = ? WHERE id = ?;'
+  const values = [nome, cargo, id]
 
   con.query(sql, values, (err, result) => {
     if (err) {
@@ -58,4 +58,4 @@ courseModel.updateCourse = (course, callback) => {
   })
 }
 
-module.exports = courseModel
+module.exports = userModel
