@@ -1,8 +1,8 @@
-const con = require('../db/dbConnection')
+import con from '../db/dbConnection.js'
 
 const courseModel = {}
 
-courseModel.listAllCourses = (callback) => {
+export const listAllCourses = (callback) => {
   const sql = "SELECT * FROM cursos;"
   con.query(sql, (err, result) => {
     if (err) {
@@ -14,20 +14,12 @@ courseModel.listAllCourses = (callback) => {
   })
 }
 
-courseModel.createCourse = (course, callback) => {
+export const createCourse = (course, callback) =>{
   const { nome, cargahoraria } = course
+  // const sql = 'INSERT INTO cursos SET ?;'
+  // const values = { nome, cargahoraria }
   const sql = 'INSERT INTO cursos (nome, cargahoraria) VALUES (?, ?);'
   const values = [nome, cargahoraria]
-  // const sql = 'INSERT INTO cursos SET ?;'
-  // const values = }nome, cargahoraria}
-
-  con.query(sql, values, (err, result) => {
-    if (err) {
-      callback(err, null)
-    } else {
-      callback(null, result)
-    }
-  })
 }
 
 courseModel.deleteCourse = (course, callback) => {
@@ -44,18 +36,32 @@ courseModel.deleteCourse = (course, callback) => {
   })
 }
 
-courseModel.updateCourse = (course, callback) => {
-  const { id, nome, cargahoraria } = course
-  const sql = 'UPDATE cursos SET nome = ?, cargahoraria = ? WHERE id = ?;'
-  const values = [nome, cargahoraria, id]
+  export const deleteCourse = (id, callback) => {
+    const sql = 'DELETE FROM cursos WHERE id = ?;'
+    const value = [id]
+    con.query(sql, value, (err, result) => {
+      if (err) {
+        callback(err, null)
+        console.log(`DB Error: ${err.sqlMessage}`)
+      } else {
+        callback(null, result)
+      }
+    })
+  }
 
-  con.query(sql, values, (err, result) => {
-    if (err) {
-      callback(err, null)
-    } else {
-      callback(null, result)
-    }
-  })
-}
+  export const updateCourse = (course, callback) => {
+    const { id, nome, cargahoraria } = course
+    const sql = 'UPDATE cursos SET nome = ?, cargahoraria = ? WHERE id = ? ;'
+    const values = [nome, cargahoraria, id]
 
-module.exports = courseModel
+    con.query(sql, values, (err, result) => {
+      if (err) {
+        callback(err, null)
+        console.log(`DB Error: ${err.sqlMessage}`)
+      } else {
+        callback(null, result)
+      }
+    })
+  }
+
+export default { listAllCourses, createCourse, deleteCourse, updateCourse }
