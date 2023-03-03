@@ -12,6 +12,15 @@ export const listAllCourses = (req, res) => {
   })
 }
 
+export const listIdCourses = (req, res) => {
+  courseModel.listAllCourses((error, result) => {
+    if (error)
+      res.status(500).json({ message: "Erro no Banco de Dados" })
+    if (result)
+      res.json(result)
+  })
+}
+
 export const createCourse = (req, res) => {
 
   const course = req.body
@@ -51,4 +60,4 @@ export const updateCourse = (req, res) => {
   })
 }
 
-export default { listAllCourses, createCourse, deleteCourse, updateCourse }
+export default { listAllCourses, listIdCourses, createCourse, deleteCourse, updateCourse }
