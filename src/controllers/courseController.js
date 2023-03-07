@@ -1,7 +1,4 @@
-import mysql from 'mysql'
 import courseModel from '../models/courseModel.js'
-
-const courseController = {}
 
 export const listAllCourses = (req, res) => {
   courseModel.listAllCourses((error, result) => {
@@ -12,20 +9,9 @@ export const listAllCourses = (req, res) => {
   })
 }
 
-export const listIdCourses = (req, res) => {
-  courseModel.listAllCourses((error, result) => {
-    if (error)
-      res.status(500).json({ message: "Erro no Banco de Dados" })
-    if (result)
-      res.json(result)
-  })
-}
-
 export const createCourse = (req, res) => {
-
   const course = req.body
   //TODO Verificar se os dados são válidos
-
   courseModel.createCourse(course, (error, result) => {
     if (error)
       res.status(500).json({ message: "Erro no Banco de Dados" })
@@ -35,11 +21,9 @@ export const createCourse = (req, res) => {
 }
 
 export const deleteCourse = (req, res) => {
-
-  const course = req.body
+  const {id} = req.body
   //TODO Verificar se os dados são válidos
-
-  courseModel.deleteCourse(course, (error, result) => {
+  courseModel.deleteCourse(id, (error, result) => {
     if (error)
       res.status(500).json({ message: "Erro no Banco de Dados" })
     if (result)
@@ -60,4 +44,4 @@ export const updateCourse = (req, res) => {
   })
 }
 
-export default { listAllCourses, listIdCourses, createCourse, deleteCourse, updateCourse }
+export default { listAllCourses, createCourse, deleteCourse, updateCourse}

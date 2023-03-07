@@ -7,22 +7,6 @@ export const listAllCourses = (callback) => {
   con.query(sql, (err, result) => {
     if (err) {
       callback(err, null)
-      console.log(`DB error: ${err.sqlMessage}`)
-    } else {
-      callback(null, result)
-    }
-  })
-}
-
-export const listIdCourses = (course, callback) => {
-  const { id } = course
-
-  const sql = "SELECT * FROM `cursos` WHERE id = ?"
-  const values = [id]
-  con.query(sql, values,  (err, result) => {
-    if (err) {
-      callback(err, null)
-      console.log(`DB error: ${err.sqlMessage}`)
     } else {
       callback(null, result)
     }
@@ -35,12 +19,6 @@ export const createCourse = (course, callback) =>{
   // const values = { nome, cargahoraria }
   const sql = 'INSERT INTO cursos (nome, cargahoraria) VALUES (?, ?);'
   const values = [nome, cargahoraria]
-}
-
-courseModel.deleteCourse = (course, callback) => {
-  const { id } = course
-  const sql = 'DELETE FROM `cursos` WHERE id = ?;'
-  const values = [id]
 
   con.query(sql, values, (err, result) => {
     if (err) {
@@ -52,17 +30,17 @@ courseModel.deleteCourse = (course, callback) => {
 }
 
   export const deleteCourse = (id, callback) => {
-    const sql = 'DELETE FROM cursos WHERE id = ?;'
-    const value = [id]
-    con.query(sql, value, (err, result) => {
-      if (err) {
-        callback(err, null)
-        console.log(`DB Error: ${err.sqlMessage}`)
-      } else {
-        callback(null, result)
-      }
-    })
-  }
+  const sql = 'DELETE FROM cursos WHERE id = ?;'
+  const value = [id]
+  con.query(sql, value, (err, result) => {
+    if (err) {
+      callback(err, null)
+      console.log(`DB Error: ${err.sqlMessage}`)
+    } else {
+      callback(null, result)
+    }
+  })
+}
 
   export const updateCourse = (course, callback) => {
     const { id, nome, cargahoraria } = course
@@ -72,11 +50,10 @@ courseModel.deleteCourse = (course, callback) => {
     con.query(sql, values, (err, result) => {
       if (err) {
         callback(err, null)
-        console.log(`DB Error: ${err.sqlMessage}`)
       } else {
         callback(null, result)
       }
     })
   }
 
-export default { listAllCourses, listIdCourses, createCourse, deleteCourse, updateCourse }
+export default { listAllCourses, createCourse, deleteCourse, updateCourse }
