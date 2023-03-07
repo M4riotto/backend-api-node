@@ -20,7 +20,8 @@ export const listId = (course, callback) => {
       callback(err, null)
     } else if(result.length === 0){
       console.log(`id ${id}, não encontrado`)
-      callback(null, result)
+      result.message = "Id inexistente no banco de dados"
+      callback(null, result.message)
     } else {
       callback(null, result)
     }
