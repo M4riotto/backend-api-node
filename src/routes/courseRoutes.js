@@ -1,6 +1,7 @@
 import express from 'express'
 import {
   listAllCourses,
+  listId,
   createCourse,
   deleteCourse,
   updateCourse
@@ -9,6 +10,7 @@ import {
 const router = express.Router()
 
 router.get('/', listAllCourses) // SELECT
+router.post('/byid', listId) // SELECT ID
 router.post('/', createCourse) // INSERT
 router.delete('/', deleteCourse) // DELETE
 router.put('/', updateCourse) // UPDATE
