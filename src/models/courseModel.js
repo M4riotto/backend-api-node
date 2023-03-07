@@ -1,7 +1,5 @@
 import con from '../db/dbConnection.js'
 
-const courseModel = {}
-
 export const listAllCourses = (callback) => {
   const sql = "SELECT * FROM cursos;"
   con.query(sql, (err, result) => {

@@ -1,8 +1,6 @@
-const con = require('../db/dbConnection')
+import con from '../db/dbConnection.js'
 
-const userModel = {}
-
-userModel.listAllUser = (callback) => {
+export const listAllUser = (callback) => {
   const sql = "SELECT * FROM users;"
   con.query(sql, (err, result) => {
     if (err) {
@@ -14,7 +12,7 @@ userModel.listAllUser = (callback) => {
   })
 }
 
-userModel.createUser = (user, callback) => {
+export const createUser = (user, callback) => {
   const { nome, cargo } = user
   const sql = 'INSERT INTO users (nome, cargo) VALUES (?, ?);'
   const values = [nome, cargo]
@@ -30,7 +28,7 @@ userModel.createUser = (user, callback) => {
   })
 }
 
-userModel.deleteUser = (user, callback) => {
+export const deleteUser = (user, callback) => {
   const { id } = user
   const sql = 'DELETE FROM `users` WHERE id = ?;'
   const values = [id]
@@ -44,7 +42,7 @@ userModel.deleteUser = (user, callback) => {
   })
 }
 
-userModel.updateUser = (user, callback) => {
+export const updateUser = (user, callback) => {
   const { id, nome, cargo } = user
   const sql = 'UPDATE users SET nome = ?, cargo = ? WHERE id = ?;'
   const values = [nome, cargo, id]
@@ -58,4 +56,4 @@ userModel.updateUser = (user, callback) => {
   })
 }
 
-module.exports = userModel
+export default { listAllUser, createUser, deleteUser, updateUser }

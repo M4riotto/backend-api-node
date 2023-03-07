@@ -1,9 +1,6 @@
-const mysql = require('mysql')
-const userModel = require('../models/userModel')
+import userModel from '../models/userModel.js'
 
-const userController = {}
-
-userController.listAllusers = (req, res) => {
+export const listAllusers = (req, res) => {
   userModel.listAllUser((error, result) => {
     if (error)
       res.status(500).json({ message: "Erro no Banco de Dados" })
@@ -12,11 +9,9 @@ userController.listAllusers = (req, res) => {
   })
 }
 
-userController.createUser = (req, res) => {
-
+export const createUser = (req, res) => {
   const user = req.body
   //TODO Verificar se os dados são válidos
-
   userModel.createUser(user, (error, result) => {
     if (error)
       res.status(500).json({ message: "Erro no Banco de Dados" })
@@ -25,11 +20,9 @@ userController.createUser = (req, res) => {
   })
 }
 
-userController.deleteUser = (req, res) => {
-
+export const deleteUser = (req, res) => {
   const user = req.body
   //TODO Verificar se os dados são válidos
-
   userModel.deleteUser(user, (error, result) => {
     if (error)
       res.status(500).json({ message: "Erro no Banco de Dados" })
@@ -38,11 +31,9 @@ userController.deleteUser = (req, res) => {
   })
 }
 
-userController.updateUser = (req, res) => {
-
+export const updateUser = (req, res) => {
   const user = req.body
   //TODO Verificar se os dados são válidos
-
   userModel.updateUser(user, (error, result) => {
     if (error)
       res.status(500).json({ message: "Erro no Banco de Dados" })
@@ -51,4 +42,4 @@ userController.updateUser = (req, res) => {
   })
 }
 
-module.exports = userController
+export default { listAllusers, createUser, deleteUser, updateUser }
