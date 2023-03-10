@@ -10,7 +10,7 @@ import {
 const router = express.Router()
 
 router.get('/', listAllCourses) // SELECT
-router.post('/:id', listId) // SELECT ID
+router.get('/:id', listId) // SELECT ID
 router.post('/', createCourse) // INSERT
 router.delete('/', deleteCourse) // DELETE
 router.put('/', updateCourse) // UPDATE
