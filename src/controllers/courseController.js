@@ -10,7 +10,7 @@ export const listAllCourses = (req, res) => {
 }
 
 export const listId = (req, res) => {
-  const course = req.params
+  const course = req.params.id
   courseModel.listId(course, (error, result) => {
     if (error)
       res.status(500).json({ message: "Erro no Banco de Dados" })
