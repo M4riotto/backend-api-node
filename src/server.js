@@ -1,9 +1,10 @@
 import express from 'express'
 import courseRoutes from './routes/courseRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import { SERVER } from './config.js'
 
 const app = express()
-const port = 3100
+const port = SERVER.PORT
 const host = 'localhost'
 
 app.use(express.json())
@@ -18,5 +19,5 @@ app.all('*', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port http://www.${host}:${port}/course`)
+  console.log(`Example app listening on port http://www.${host}:${port}`)
 })
