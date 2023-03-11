@@ -55,6 +55,20 @@ export const createCourse = (course, callback) =>{
   })
 }
 
+export const deletId = (course, callback) => {
+  const { id } = course
+  const sql = "DELETE FROM cursos WHERE id = ?;"
+  const values = [id]
+  con.query(sql, values, (err, result) => {
+    if (err) {
+      callback(err, null)
+      console.log(`DB Error: ${err.sqlMessage}`)
+    } else {
+      callback(null, result)
+    }
+  })
+}
+
   export const updateCourse = (course, callback) => {
     const { id, nome, cargahoraria } = course
     const sql = 'UPDATE cursos SET nome = ?, cargahoraria = ? WHERE id = ? ;'
@@ -69,4 +83,4 @@ export const createCourse = (course, callback) =>{
     })
   }
 
-export default { listAllCourses, listId, createCourse, deleteCourse, updateCourse }
+export default { listAllCourses, listId, createCourse, deleteCourse, deletId, updateCourse }

@@ -10,7 +10,7 @@ export const listAllCourses = (req, res) => {
 }
 
 export const listId = (req, res) => {
-  const course = req.params.id
+  const course = req.params
   courseModel.listId(course, (error, result) => {
     if (error)
       res.status(500).json({ message: "Erro no Banco de Dados" })
@@ -41,6 +41,15 @@ export const deleteCourse = (req, res) => {
   })
 }
 
+export const deletId = (req, res) => {
+  const course = req.params
+  courseModel.deletId(course, (error, result) => {
+    if (error)
+      res.status(500).json({ message: "Erro no Banco de Dados" })
+    if (result)
+      res.json({ message: "Curso Deletado com sucesso!" })
+  })
+}
 export const updateCourse = (req, res) => {
 
   const course = req.body
@@ -54,4 +63,4 @@ export const updateCourse = (req, res) => {
   })
 }
 
-export default { listAllCourses, listId, createCourse, deleteCourse, updateCourse}
+export default { listAllCourses, listId, createCourse, deleteCourse, deletId, updateCourse}

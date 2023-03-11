@@ -61,6 +61,20 @@ export const deleteUser = (user, callback) => {
   })
 }
 
+export const deletId = (user, callback) => {
+  const { id } = user
+  const sql = "DELETE FROM users WHERE id = ?;"
+  const values = [id]
+  con.query(sql, values, (err, result) => {
+    if (err) {
+      callback(err, null)
+      console.log(`DB Error: ${err.sqlMessage}`)
+    } else {
+      callback(null, result)
+    }
+  })
+}
+
 export const updateUser = (user, callback) => {
   const { id, nome, cargo } = user
   const sql = 'UPDATE users SET nome = ?, cargo = ? WHERE id = ?;'
@@ -75,4 +89,4 @@ export const updateUser = (user, callback) => {
   })
 }
 
-export default { listAllUser, createUser, listId, deleteUser, updateUser }
+export default { listAllUser, createUser, listId, deleteUser, deletId, updateUser }

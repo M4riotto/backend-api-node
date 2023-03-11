@@ -41,6 +41,16 @@ export const deleteUser = (req, res) => {
   })
 }
 
+export const deletId = (req, res) => {
+  const user = req.params
+  userModel.deletId(user, (error, result) => {
+    if (error)
+      res.status(500).json({ message: "Erro no Banco de Dados" })
+    if (result)
+      res.json({ message: "User Deletado com sucesso!" })
+  })
+}
+
 export const updateUser = (req, res) => {
   const user = req.body
   //TODO Verificar se os dados são válidos
@@ -52,4 +62,4 @@ export const updateUser = (req, res) => {
   })
 }
 
-export default { listAllusers, listId, createUser, deleteUser, updateUser }
+export default { listAllusers, listId, createUser, deleteUser, deletId, updateUser }

@@ -5,6 +5,7 @@ import {
   listId,
   createUser,
   deleteUser,
+  deletId,
   updateUser
 } from '../controllers/userController.js'
 
@@ -14,6 +15,7 @@ router.get('/', listAllusers);
 router.get('/:id', listId);
 router.post('/', createUser);
 router.delete('/', deleteUser);
+router.delete('/:id', deletId);
 router.put('/', updateUser);
 
 export default router
